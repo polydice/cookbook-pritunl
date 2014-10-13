@@ -5,4 +5,6 @@
 Berksfile.lock
 Gemfile.lock
 node.json
-tmp/*
+tmp/*.kitchen/
+.kitchen.local.yml
+.kitchen
