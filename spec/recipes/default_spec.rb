@@ -1,7 +1,7 @@
-require "spec_helper.rb"
+require_relative "../spec_helper"
 
 describe "pritunl::default" do
-  let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
+  let(:chef_run) { ChefSpec::SoloRunner.new.converge(described_recipe) }
 
   it "starts pritunl service" do
     expect(chef_run).to start_service("pritunl")
@@ -12,7 +12,7 @@ describe "pritunl::default" do
   end
 
   context "ubuntu-14.04" do
-    let(:chef_run) { ChefSpec::Runner.new(platform: "ubuntu", version: "14.04").converge(described_recipe) }
+    let(:chef_run) { ChefSpec::SoloRunner.new(platform: "ubuntu", version: "14.04").converge(described_recipe) }
 
     it "adds apt repository" do
       expect(chef_run).to add_apt_repository("pritunl")
@@ -24,7 +24,7 @@ describe "pritunl::default" do
   end
 
   context "centos-7.0" do
-    let(:chef_run) { ChefSpec::Runner.new(platform: "centos", version: "7.0").converge(described_recipe) }
+    let(:chef_run) { ChefSpec::SoloRunner.new(platform: "centos", version: "7.0").converge(described_recipe) }
 
     it "includes yum-epel recipe" do
       expect(chef_run).to include_recipe("yum-epel")
