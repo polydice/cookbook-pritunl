@@ -1,12 +1,3 @@
-#
-# Cookbook Name:: pritunl
-# Recipe:: default
-#
-# Copyright 2014, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
-
 if platform_family?("debian")
   apt_repository "pritunl" do
     uri          "http://ppa.launchpad.net/pritunl/ppa/ubuntu"
